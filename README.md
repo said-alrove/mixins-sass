@@ -1,7 +1,7 @@
 # mixins-SASS
 Here I'll upload useful mixins for SASS (either created by me or others).
 
-## CSS Grid Mixin (14.07.21), created by me!.
+## CSS Grid Mixin (14.07.21), created by (@said-alrove)[https://twitter.com/said_alrove].
 
 ### Mixin's preview
 
@@ -11,7 +11,7 @@ Here I'll upload useful mixins for SASS (either created by me or others).
 #### CSS
 ![](readme/grid-CSS.png)
 
-## Flexbox Mixin (14.07.21), created by me!.
+## Flexbox Mixin (14.07.21), created by (@said-alrove)[https://twitter.com/said_alrove].
 
 ### Mixin's preview
 
@@ -21,4 +21,4 @@ Here I'll upload useful mixins for SASS (either created by me or others).
 #### CSS
 ![](readme/flexbox-CSS.png)
 
-I'll continue uploading more mixins soon...
+I'll continue uploading more mixins soon...if you want to help me adding more interested mixins send me a message on (Twitter)[https://twitter.com/said_alrove] :D!.
