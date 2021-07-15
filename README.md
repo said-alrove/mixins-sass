@@ -23,4 +23,5 @@ The images that I'll upload are illustrative only, they don't show all the prope
 #### CSS
 ![](readme/flexbox-CSS.png)
 
+## Coming soon...
 I'll continue uploading more mixins soon...if you want to help me adding more interested mixins send me a message on [Twitter](https://twitter.com/said_alrove) :D!.
