@@ -8,20 +8,20 @@ The images that I'll upload are illustrative only, they don't show all the prope
 ### Mixin's preview
 
 #### SASS
-![](readme/grid-SASS.png)
+![](readme/grid-sass.png)
 
 #### CSS
-![](readme/grid-CSS.png)
+![](readme/grid-css.png)
 
 ## Flexbox Mixin (14.07.21), created by [@said-alrove](https://twitter.com/said_alrove).
 
 ### Mixin's preview
 
 #### SASS
-![](readme/flexbox-SASS.png)
+![](readme/flexbox-sass.png)
 
 #### CSS
-![](readme/flexbox-CSS.png)
+![](readme/flexbox-css.png)
 
 ## Coming soon...
 I'll continue uploading more mixins soon...if you want to help me adding more interesting mixins, send me a message on [Twitter](https://twitter.com/said_alrove) :D!.
