@@ -1,0 +1,233 @@
+///////////
+// GRID // 
+////////// 
+
+// *** NOTES *** // 
+
+// *** In most of the cases just if the values of a shorthand aren't falsey they'll be printed together, otherwise whatever is the individual property...will be printed *** // 
+
+// *** If for any reason you put both $al-items and $jt-items instead of plc-items it'll just print $jt-items due to is the first one that's parsed in the conditionals *** //
+
+// *** If for any reason you put both $al-items and $jt-content instead of plc-content it'll just print $jt-content due to is the first one that's parsed in the conditionals *** //
+
+@mixin grid
+(
+    $rows: false, 
+    $cols: false, 
+    $flow: false, 
+    $auto-rows: false, 
+    $auto-cols: false,  
+    $plc-items: false, 
+    $jt-items: false, 
+    $al-items: false, 
+    $plc-content: false,
+    $jt-content: false, 
+    $al-content: false, 
+    $gap: false
+) 
+{
+    display: grid;
+
+    @if $rows and $cols {
+        grid: $rows / $cols;
+    } @else if $rows {
+        grid-template-rows: $rows;
+    } @else if $cols {
+        grid-template-cols: $cols;
+    }
+
+    @if $flow {
+        grid-auto-flow: $flow;
+    }
+    @if $auto-rows {
+        grid-auto-rows: $auto-rows;
+    }
+    @if $auto-cols {
+        grid-auto-cols: $auto-cols;
+    }
+
+    @if $plc-items {
+        place-items: $plc-items;
+    } @else if $jt-items {
+        justify-items: $jt-items;
+    } @else if $al-items {
+        align-items: $al-items;
+    }
+
+    @if $plc-content {
+        place-content: $plc-content;
+    } @else if $jt-content {
+        justify-content: $jt-content;
+    } @else if $al-content {
+        align-content: $al-content;
+    }
+}
+
+//////////////
+// FLEXBOX // 
+/////////////
+
+// *** NOTES *** //
+
+// *** In most of the cases just if the values of a shorthand aren't falsey they'll be printed together, otherwise whatever is the individual property...will be printed *** // 
+
+@mixin flexbox
+(
+    $dir: false, 
+    $wrap: false, 
+
+    $jt-content: false, 
+    $al-items: false,
+
+    $gap: false
+)
+{
+    display: flex;
+    
+    @if $dir and $wrap {
+        flex-flow: $dir $wrap;
+    } @else if $dir {
+        flex-dir: $dir;
+    } @else if $wrap {
+        flex-wrap: $wrap;
+    }
+
+    @if $jt-content {
+        justify-content: $jt-content;
+    }
+    @if $al-items {
+        align-items: $al-items;
+    }
+
+    @if $gap {
+        gap: $gap;
+    }
+}
+
+////////////////////// 
+// PSEUDO ELEMENTS //
+///////////////////// 
+
+// *** NOTES *** // 
+
+// *** I decided to still use the individual properties as arguments due to that way you can be more specific when calling this mixing (thanks to this, you can identify faster where each value belongs to) *** //
+
+// *** Inset has a 81.89% usage in 14.07.21 so I consider useful to use it here instead of putting each property and that way write less code *** //
+
+// *** You might use inset only if you give the properly values, e.g. $inset: 1rem; or $inset: 1rem 2rem;...if you use $inset to give it the four values individually, will be harder to understand where each value belongs to (top, right, bottom, or left), therefore if you have to specify more than 2 values, then you should use the individual arguments instead of using the inset shorthand *** //
+
+// *** However, if you use the individual arguments, they'll be printed with the shorthand $inset anyways, the difference is that you'll be able to understand in a better way where a value belongs to from the SASS file *** //
+
+// *** By interpolating the location value you can decide if the pseudo-element is either before or after (before is the default) without creating a mixin for each one *** //
+
+@mixin pseudo-element
+(
+    $loc: before, 
+    $cont: '',
+    $pos: absolute,
+    $inset: false,
+    $top: 0,
+    $bottom: 0,
+    $left: 0,
+    $right: 0
+) 
+{
+    position: relative;
+
+    &::#{$loc} {
+        content: $cont;
+        position: $pos;
+
+        @if $inset {
+            inset: $inset;
+        } @else if $inset == false {
+            inset: $top $right $bottom $left;
+        }
+        @content;
+    }
+}
+
+/////////////////
+// BOX-SHADOW // 
+//////////////// 
+
+// *** NOTES *** // 
+
+// *** I didn't find any way how I could give the opportunity to the user of putting more than one shadow (I'll work on that) *** // 
+
+// *** I parsed the arguments of the $args... list with @each (I have to mention that I didn't use the $ key variable, that's basically because I needed to use it only when calling the mixin, otherwise just by putting values as arguments without putting the key name of the argument was gonna make impossible to parse it in the loop, there would have had an error in the console telling me that I can't parse more than 1 value for the $args... "variable". Furthermore having to give a name for the argument, and not just the value, makes it easier to understand to which browser a prefix is related to) *** //
+
+// *** Nowadays I don't know how useful is to use prefixes with the box-shadow property due to there's already enough support from the browsers, but I still included it anyways (I used the @supports rule due to that way the browser is gonna read the code with the prefixes only if it's supported). If you want to use prefixes, you have to specify that you are going to by using the support argument and giving it a true value (just then, the variables you put as prefixes will be parsed) *** //
+
+// *** If you put a prefix without specifying it with the $support variable, SASS is gonna stop compilating and it'll tell you that you should use the $support variable with a true value to allows you to put prefixes *** //
+
+// *** If you don't specify any prefix, the mixin will automatically add the 4 four more useful prefixes (from my consideration), otherwise it'll add just the ones you put *** //
+
+@mixin box-shadow
+(
+    $x-axis: 0, 
+    $y-axis: 0, 
+    $blur: 0, 
+    $spread: 0, 
+    $color: #000, 
+    $support: false,
+    $args...
+) 
+{
+    box-shadow: $x-axis $y-axis $blur $spread $color;
+    @supports not (box-shadow: '') {
+        box-shadow: $x-axis $y-axis $blur $spread $color;
+        @if $support != true and $args {
+            @error 'The $support variable is #{$support}, if you want to use prefixes you should give it a true value';
+        } @else if $support {
+            @each $key, $prefix in keywords($args) {
+                -#{$prefix}-box-shadow: $x-axis $y-axis $blur $spread $color;
+            }
+        } @else if $support != true {
+            box-shadow: $x-axis $y-axis $blur $spread $color;
+            -webkit-box-shadow: $x-axis $y-axis $blur $spread $color;
+            -moz-box-shadow: $x-axis $y-axis $blur $spread $color;
+            -ms-box-shadow: $x-axis $y-axis $blur $spread $color;
+            -o-box-shadow: $x-axis $y-axis $blur $spread $color;
+        }
+    }   
+}
+
+//////////////
+// SUPPORT // 
+///////////// 
+
+// *** NOTES *** // 
+
+// *** If you don't put any prefix, the mixin will automatically add the 4 four more useful prefixes (from my consideration), otherwise it'll add just the ones you put *** //
+
+// *** If you put a prefix without specifying it with the $support variable, SASS is gonna stop compilating and it'll tell you that you should use the $support variable with a true value to allows you to put prefixes *** //
+
+@mixin support
+(
+    $property: false, 
+    $value: false, 
+    $support: false,
+    $args...
+) 
+{
+    #{$property}: $value;
+    @supports not (#{$property}: $value) {
+        #{$property}: $value; 
+        @if $support != true and $args {
+            @error 'The $support variable is #{$support}, if you want to use prefixes you should give it a true value';
+        } @else if $support {
+            @each $key, $prefix in keywords($args) {
+                -#{$prefix}-#{$property}: $value;
+            }
+        } @else if $support != true {
+            #{$property}: $value;
+            -webkit-#{$property}: $value;
+            -moz-#{$property}: $value;
+            -ms-#{$property}: $value;
+            -o-#{$property}: $value;
+        }
+    }
+}
+
+// *** Coming soon... *** //
