@@ -23,7 +23,7 @@ The images that I'll upload are illustrative only, they don't show all the prope
 #### CSS
 ![](readme/flexbox-css.png)
 
-## Pseudo-elements mixin (15.07.21), created by [@said-alrove](https://twitter.com/said_alrove).
+## Pseudo-elements mixin (15.07.21), created by [@said-alrove](https://twitter.com/said_alrove) inspired in one created by [@kevinjpowell](https://twitter.com/kevinjpowell?lang=en).
 
 ### Mixin's preview
 
