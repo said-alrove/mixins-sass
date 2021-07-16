@@ -35,16 +35,6 @@ The images that I'll upload are illustrative only, they don't show all the prope
 #### CSS
 ![](readme/pseudo-css.png)
 
-## Box-shadow mixin (15.07.21), created by [@said-alrove](https://twitter.com/said_alrove).
-
-### Mixin's preview
-
-#### SASS
-![](readme/box-shadow-sass.png)
-
-#### CSS
-![](readme/box-shadow-css.png)
-
 ## Support mixin (15.07.21), created by [@said-alrove](https://twitter.com/said_alrove).
 
 ### Mixin's preview
@@ -54,6 +44,26 @@ The images that I'll upload are illustrative only, they don't show all the prope
 
 #### CSS
 ![](readme/support-css.png)
+
+## Shadow mixin (16.07.21), created by [@said-alrove](https://twitter.com/said_alrove).
+
+### Mixin's preview
+
+#### SASS
+![](readme/shadow-sass.png)
+
+#### CSS
+![](readme/shadow-css.png)
+
+## Media Queries mixin (16.07.21), created by [@said-alrove](https://twitter.com/said_alrove).
+
+### Mixin's preview
+
+#### SASS
+![](readme/queries-sass.png)
+
+#### CSS
+![](readme/queries-css.png)
 
 ## Coming soon...
 I'll continue uploading more mixins soon...if you want to help me adding more interesting mixins, send me a message on [Twitter](https://twitter.com/said_alrove) :D!.
