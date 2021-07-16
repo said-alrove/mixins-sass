@@ -1,7 +1,7 @@
 # mixins-sass
-Here I'll upload useful mixins for SASS (either created by me or others).
-
 The project name is LESSIER that stands for less code to make projects easier :D.
+
+Here I'll upload useful mixins for SASS (either created by me or others).
 
 The images that I'll upload are illustrative only, they don't show all the properties you can use in the mixins (check out the SASS file to see all the properties that are available in the mixins). There are comments in the SASS file available for you to understand how to use each mixin.
 
