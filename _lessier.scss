@@ -1,0 +1,277 @@
+////////////////////////// 
+// *** LESSIER 1.1 *** // 
+///////////////////////// 
+
+@use 'sass:map';
+
+///////////////////// 
+// *** MIXINS *** // 
+////////////////////
+
+///////////
+// GRID // 
+////////// 
+
+// *** NOTES *** // 
+
+// *** If you're gonna use both properties "justify" and "align" then, use the shorthand property "place" for writing less code *** // 
+
+// *** If for any reason you put both properties each individually, SASS is gonna stop compilating and it'll tell you that you should use the "place" shorthand instead *** //
+
+@mixin grid
+(
+    $rows: false, 
+    $cols: false, 
+    $flow: false, 
+    $auto-rows: false, 
+    $auto-cols: false,  
+    $plc-items: false, 
+    $jt-items: false, 
+    $al-items: false, 
+    $plc-content: false,
+    $jt-content: false, 
+    $al-content: false, 
+    $gap: false
+) 
+{
+    display: grid;
+    @if $rows and $cols {
+        grid: $rows / $cols;
+    } @else if $rows {
+        grid-template-rows: $rows;
+    } @else if $cols {
+        grid-template-columns: $cols;
+    }
+
+    @if $flow { grid-auto-flow: $flow; }
+    
+    @if $auto-rows { grid-auto-rows: $auto-rows; }
+
+    @if $auto-cols { grid-auto-columns: $auto-cols; }
+
+    @if $plc-items {
+        place-items: $plc-items;
+    } @else if $jt-items and $al-items {
+        @error 'You are trying to use the $jt-items and $al-items arguments individually instead of using the shorthand $plc-items for fewer code';
+    } @else if $jt-items {
+        justify-items: $jt-items;
+    } @else if $al-items {
+        align-items: $al-items;
+    }
+
+    @if $plc-content {
+        place-content: $plc-content;
+    } @else if $jt-content and $al-content {
+        @error 'You are trying to use the $jt-content and $al-content arguments individually instead of using the shorthand $plc-content for fewer code';
+    } @else if $jt-content {
+        justify-content: $jt-content;
+    } @else if $al-content {
+        align-content: $al-content;
+    }
+
+    @if $gap { gap: $gap; }
+}
+
+//////////////
+// FLEXBOX // 
+/////////////
+
+// *** NOTES *** //
+
+// *** If you use both properties "flex-direction" and "flex-wrap", SASS will compile it with the shorthand "flex-flow" for less code *** // 
+
+@mixin flexbox
+(
+    $dir: false, 
+    $wrap: false, 
+    $jt-content: false, 
+    $al-items: false,
+    $gap: false
+)
+{
+    display: flex;
+    @if $dir and $wrap {
+        flex-flow: $dir $wrap;
+    } @else if $dir {
+        flex-direction: $dir;
+    } @else if $wrap {
+        flex-wrap: $wrap;
+    }
+
+    @if $jt-content { justify-content: $jt-content; }
+
+    @if $al-items { align-items: $al-items; }
+
+    @if $gap { gap: $gap; }
+}
+
+////////////////////// 
+// PSEUDO ELEMENTS //
+///////////////////// 
+
+// *** NOTES *** // 
+
+// *** I decided to still use the individual properties as arguments due to that way you can be more specific when calling this mixing (thanks to this, you can identify faster where each value belongs to) *** //
+
+// *** "Inset" has a 81.89% usage in 14.07.21 so I consider useful to use it here instead of putting each property, and that way write less code *** //
+
+// *** You might use inset only if you give the properly values, e.g. inset: 1rem; or inset: 1rem 2rem;...if you use $inset to give it the four values individually, will be harder to understand where each value belongs to (top, right, bottom, or left), therefore if you have to specify more than 2 values, then you should use the individual arguments instead of using the inset shorthand *** //
+
+// *** However, if you use the individual arguments, they'll be printed with the shorthand "inset" anyways, the difference is that you'll be able to understand in a better way where a value belongs to from the SASS file *** //
+
+// *** By interpolating the location value you can decide if the pseudo-element is either before or after (before is the default) *** //
+
+@mixin pseudo-element
+(
+    $loc: before, 
+    $cont: '',
+    $pos: absolute,
+    $inset: false,
+    $top: 0,
+    $bottom: 0,
+    $left: 0,
+    $right: 0
+) 
+{
+    position: relative;
+    &::#{$loc} {
+        content: $cont;
+        position: $pos;
+        @if $inset {
+            inset: $inset;
+        } @else if $inset == false {
+            inset: $top $right $bottom $left;
+        }
+        @content;
+    }
+}
+
+//////////////
+// SUPPORT // 
+///////////// 
+
+// *** NOTES *** // 
+
+// *** By default, if you don't give any true value to the "support" argument, the mixin will print within the code the 4 most used prefixes (from my pov) *** //
+
+// *** Otherwise if you give to the "support" argument a true value, you're able to write your own prefixes *** //
+
+// *** To write your own prefixes, you should create arguments with prefixes as values (e.g. $chrm: 'webkit', the key name of the argument nevermind, it's needed only because without it it's impossible to parse it with @each) that way the mixin won't print unnecessary prefixes *** //
+
+// *** If you write your own prefix without specifying it with the "support" argument (by giving it a true value as I mentioned before), SASS is gonna stop compilating and it'll show you an error *** //
+
+@mixin support
+(
+    $property: false, 
+    $value: false, 
+    $support: false,
+    $args...
+) 
+{
+    #{$property}: $value;
+    @supports not (#{$property}: $value) {
+        #{$property}: $value; 
+        @if $support {
+            @each $key, $prefix in keywords($args) {
+                -#{$prefix}-#{$property}: $value;
+            }
+        } @else if $support != true {
+            -webkit-#{$property}: $value;
+            -moz-#{$property}: $value;
+            -ms-#{$property}: $value;
+            -o-#{$property}: $value;
+        }
+    }
+}
+
+/////////////
+// SHADOW // 
+//////////// 
+
+// *** NOTES *** // 
+
+// *** Using this mixin allows you to be more specific about where a value belongs to (e.g. by specifying the "x" or "y" axis with the arguments' names) * ** //
+
+// *** I didn't find any way how I could give the opportunity to the user of putting more than one shadow (I'll work on that) *** // 
+
+@mixin shadow
+(
+    $type: box,
+    $x-axis: 0, 
+    $y-axis: 0, 
+    $blur: 0, 
+    $spread: 0, 
+    $color: #000, 
+) 
+{
+    @if $type == 'box' {
+        #{$type}-shadow: $x-axis $y-axis $blur $spread $color;
+    } @else if $type == 'text' {
+        #{$type}-shadow: $x-axis $y-axis $blur $color;
+    } @else {
+        @error '#{$type} is an unknown value, try using either box or text for creating shadows';
+    }
+}
+
+////////////////////
+// MEDIA QUERIES // 
+/////////////////// 
+
+// *** NOTES *** // 
+
+// *** You can choose among the different default sizes I've already created (or if you want, you can either modify or create your own screen resolutions for the media queries just by changing either the key, the value, or both once you import this stylesheet). You can also modify the key devices as well *** //
+
+// *** You can decide what'll be the query's criteria for the breakpoint (min-width, max-width, min-height, or max-height) just by writing the rule in the type's argument (min-width is the default) *** //
+
+// *** I didn't find a way to let the mixin detects when the user puts an unknown value, the mixin only detects when the user doesn't put a value and leave the size variable empty *** //
+
+// *** AVAILABLES SIZES *** //
+
+// *** I've assigned a key for each kinda device to be more specific and then I added the different screen sizes that could fit there with keywords like "small", "medium", and "big" as keys, but you can add more devices and screen sizes if you want *** //
+
+// 1   > > >   480px 
+
+// 2   > > >   552px 
+
+// 3   > > >   768px
+
+// 4   > > >   919px
+
+// 5   > > >   1080px
+
+// 6   > > >   1212px
+
+$screen-sizes: 
+(
+    'smartphone': (
+        'small': 480px,
+        'medium': 552px
+    ),
+    'tablet': (
+        'small': 768px,
+        'medium': 912px,
+        'big': 1080px
+    ),
+    'desktop': (
+        'small': 1212px
+    )
+);
+
+@mixin query
+(
+    $type: min-width, 
+    $device: false, 
+    $size: false
+) 
+{
+    $screen: map.get($screen-sizes, $device, $size); 
+    @media (#{$type}: $screen) { @content; }
+
+    @if $device == false { 
+        @error 'You have not given an available device value for your media query yet'; 
+    } @else if $size == false {
+        @error 'You have not given an available screen size for your media query yet';
+    }
+}
+
+// *** Coming soon... *** //
