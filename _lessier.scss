@@ -3,6 +3,7 @@
 ///////////////////////// 
 
 @use 'sass:map';
+@use 'sass:meta';
 
 ///////////////////// 
 // *** MIXINS *** // 
@@ -172,7 +173,7 @@
     @supports not (#{$property}: $value) {
         #{$property}: $value; 
         @if $support {
-            @each $key, $prefix in keywords($args) {
+            @each $key, $prefix in meta.keywords($args) {
                 -#{$prefix}-#{$property}: $value;
             }
         } @else if $support != true {
