@@ -107,21 +107,32 @@ I've assigned a key for each kinda device to be more specific and then I added t
 #### CSS
 ![](readme/query-css.png)
 
+### Sizes
+
+![](viewport-vars(1).png)
+
+![](viewport-vars(2).png)
+
+![](viewport-vars(3).png)
 
 ## Box-model mixin (04.08.21), created by [@said-alrove](https://twitter.com/said_alrove).
 
 ### Notes
 You just have to call this mixin within the "html" and "*" selectors and the mixin itself it's gonna do the rest.
 
-The mixin automatically detects when it's located within an "html" or "*" selector and then runs, if it's not located there it's gonna show you an error telling you that you should use this mixin inside the selectors mentioned before.
+The mixin automatically detects when it's located within the html or the universal selector and then runs, if it's not located there, it's gonna show you an error telling you that you should use this mixin inside the selectors mentioned before.
 
 ### Mixin's preview 
 
 #### SASS
-![](readme/box-sass.png)
+![](readme/box(1)-sass.png)
+
+![](readme/box(2)-sass.png)
 
 #### CSS
-![](readme/box-css.png)
+![](readme/box(1)-css.png)
+
+![](readme/box(2)-css.png)
 
 ## Coming soon...
 I'll continue uploading more mixins soon...if you want to help me adding more interesting mixins, send me a message on [Twitter](https://twitter.com/said_alrove) :D!.
