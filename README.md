@@ -113,9 +113,9 @@ Now each key's value is related to a variable within the SASS file instead of a 
 
 If you'd want to know more about what I'm talking about you can check the [@use](https://sass-lang.com/documentation/at-rules/use) and [@forward](https://sass-lang.com/documentation/at-rules/forward) sections in the [SASS documentation](https://sass-lang.com/documentation/syntax).
 
-*Does that mean that I won't be able to use, for instance, 'sm' as the "$size" value anymore?* Absolutely not, the "$size" variable is related to the keys nested within the maps of the different devices (those maps are also nested within the main map that contains all the information), meanwhile the new variables are related to the values of those keys, therefore you'll still be able to use the keys' names 'sm/md/lg/xl' as the "$size" value.
+**Does that mean that I won't be able to use, for instance, 'sm' as the "$size" value anymore?** Absolutely not, the "$size" variable is related to the keys nested within the maps of the different devices (those maps are also nested within the main map that contains all the information), meanwhile the new variables are related to the values of those keys, therefore you'll still be able to use the keys' names 'sm/md/lg/xl' as the "$size" value.
 
-*Does that mean that I won't be able to customize the sizes manually in the library anymore?* Once again, no, this new feature will only help you to make that process more dynamic without eliminating the possibility of customizing manually those values, therefore ... have fun!.
+**Does that mean that I won't be able to customize the sizes manually in the library anymore?** Once again, no, this new feature will only help you to make that process more dynamic without eliminating the possibility of customizing manually those values, therefore ... have fun!.
 
 The sizes that are assigned by default are based on the most used screen sizes in the world according to [Statcounter](https://gs.statcounter.com/screen-resolution-stats/desktop/worldwide).
 
