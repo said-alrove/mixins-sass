@@ -107,7 +107,13 @@ I've assigned a key for each kinda device to be more specific and then I added t
 #### CSS
 ![](readme/query-css.png)
 
-### Sizes
+### New feature
+
+Now each key is related to a variable withing the SASS file instead of a fixed value, this allows the user to modify a key's variable if he wants without going to the library just by importing it with the rule "@use" and the keyword "with", thay way you can overwrite a variable's value locally (this means that the modified variable will be only available in that specific module where you imported it). If you want more descriptive information check the second image below (the variables have the "less-" prefix due to I had already imported them in a main SASS file and I'm used to forward the different modules that contain members such as variables, maps, or mixins with prefixes, and thanks to that I can have more control over the members' location. But if you import Lessier directly into your module, you just should put the module's name as prefix, e.g. theme.$vw-mobile-sm unless than as me you specify to don't have a prefix for that module you're importing with "@use '../theme' as *;).
+
+If you'd want to know more about what I'm talking about you can check the [@use](https://sass-lang.com/documentation/at-rules/use) and [@forward](https://sass-lang.com/documentation/at-rules/forward) section in the [SASS documentation](https://sass-lang.com/documentation/syntax).
+
+#### Sizes
 
 ![](readme/viewport-vars(1).png)
 
@@ -118,7 +124,7 @@ I've assigned a key for each kinda device to be more specific and then I added t
 ## Box-model mixin (04.08.21), created by [@said-alrove](https://twitter.com/said_alrove).
 
 ### Notes
-You just have to call this mixin within the "html" and "*" selectors and the mixin itself it's gonna do the rest.
+You just have to call this mixin within the html and universal selector and the mixin itself it's gonna do the rest.
 
 The mixin automatically detects when it's located within the html or the universal selector and then runs, if it's not located there, it's gonna show you an error telling you that you should use this mixin inside the selectors mentioned before.
 
