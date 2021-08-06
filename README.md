@@ -91,7 +91,7 @@ I didn't find any way how I could give the opportunity to the user of putting mo
 ## Media Queries mixin (16.07.21), created by [@said-alrove](https://twitter.com/said_alrove).
 
 ### Notes
-You can choose among the different default sizes I've already created (or if you want, you can either modify or create your own screen resolutions for the media queries just by changing either the key, the value, or both once you import this stylesheet). You can also modify the key devices as well.
+You can choose among the different default sizes I've already created (or if you want, you can either modify or create your own screen resolutions for the media queries just by changing either the key, the value, or both once you import this stylesheet). You can also modify the keys devices as well.
 
 You can decide what'll be the query's criteria for the breakpoint (min-width, max-width, min-height, or max-height) just by writing the rule in the type's argument (min-width is the default).
 
@@ -107,7 +107,7 @@ I've assigned a key for each kinda device to be more specific and then I added t
 #### CSS
 ![](readme/query-css.png)
 
-### New feature
+### New feature (06.08.21)
 
 Now each key's value is related to a variable within the SASS file instead of a fixed value, this allows the user to modify a key's variable if he wants without going to the library just by importing it with the rule "@use" and the keyword "with", that way you can overwrite a variable's value locally (this means that the modified variable will be only available in that specific module where you imported it). If you want more descriptive information check the second image below (the variables have the "less-" prefix due to I had already imported them in a SASS main file and I'm used to forwarding the different modules that contain members such as variables, maps, or mixins with prefixes because thanks to that I can have more control over the members' location. But if you import Lessier directly into your module, you just should put the module's name as a prefix, e.g. "theme.$vw-mobile-sm" unless that as me, you specify to don't have a prefix for that module you're importing by doing this "@use '../theme' as *;).
 
