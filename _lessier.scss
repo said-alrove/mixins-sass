@@ -1,24 +1,22 @@
 ////////////////////////// 
-// *** LESSIER 1.2 *** // 
+// *** LESSIER 1.5 *** // 
 ///////////////////////// 
 
+@use 'sass:math';
 @use 'sass:map';
+@use 'sass:list';
 @use 'sass:meta';
+@use 'sass:selector';
+@use 'sass:string';
+@use 'sass:color';
 
 ///////////////////// 
-// *** MIXINS *** // 
+// *** MIXINS *** //
 ////////////////////
 
 //************************
 //* CSS GRID
 //************************ 
-
-// *** NOTES *** // 
-
-// *** If you're gonna use both properties "justify" and "align" then, use the shorthand property "place" for writing less code *** // 
-
-// *** If for any reason you put both properties each individually, SASS is gonna stop compilating and it'll tell you that you should use the "place" shorthand instead *** //
-
 @mixin grid
 (
     $rows: false, 
@@ -32,6 +30,8 @@
     $plc-content: false,
     $jt-content: false, 
     $al-content: false, 
+    $row-gap: false, 
+    $col-gap: false,
     $gap: false
 ) 
 {
@@ -70,17 +70,18 @@
         align-content: $al-content;
     }
 
-    @if $gap { gap: $gap; }
+    @if $gap { 
+        gap: $gap; 
+    } @else if $row-gap {
+        row-gap: $row-gap;
+    } @else if $col-gap {
+        column-gap: $col-gap;
+    }
 }
 
 //************************
 //* CSS FLEXBOX
 //************************
-
-// *** NOTES *** //
-
-// *** If you use both properties "flex-direction" and "flex-wrap", SASS will compile it with the shorthand "flex-flow" for less code *** // 
-
 @mixin flexbox
 (
     $dir: false, 
@@ -109,19 +110,6 @@
 //************************
 //* PSEUDO-ELEMENT
 //************************
-
-// *** NOTES *** // 
-
-// *** I decided to still use the individual properties as arguments due to that way you can be more specific when calling this mixing (thanks to this, you can identify faster where each value belongs to) *** //
-
-// *** "Inset" has a 81.89% usage in 14.07.21 so I consider useful to use it here instead of putting each property, and that way write less code *** //
-
-// *** You might use inset only if you give the properly values, e.g. inset: 1rem; or inset: 1rem 2rem;...if you use $inset to give it the four values individually, will be harder to understand where each value belongs to (top, right, bottom, or left), therefore if you have to specify more than 2 values, then you should use the individual arguments instead of using the inset shorthand *** //
-
-// *** However, if you use the individual arguments, they'll be printed with the shorthand "inset" anyways, the difference is that you'll be able to understand in a better way where a value belongs to from the SASS file *** //
-
-// *** By interpolating the location value you can decide if the pseudo-element is either before or after (before is the default) *** //
-
 @mixin pseudo-element
 (
     $loc: before, 
@@ -150,17 +138,6 @@
 //************************
 //* SUPPORT
 //************************ 
-
-// *** NOTES *** // 
-
-// *** By default, if you don't give any true value to the "support" argument, the mixin will print within the code the 4 most used prefixes (from my pov) *** //
-
-// *** Otherwise if you give to the "support" argument a true value, you're able to write your own prefixes *** //
-
-// *** To write your own prefixes, you should create arguments with prefixes as values (e.g. $chrm: 'webkit', the key name of the argument nevermind, it's needed only because without it it's impossible to parse it with @each) that way the mixin won't print unnecessary prefixes *** //
-
-// *** If you write your own prefix without specifying it with the "support" argument (by giving it a true value as I mentioned before), SASS is gonna stop compilating and it'll show you an error *** //
-
 @mixin support
 (
     $property: false, 
@@ -188,13 +165,6 @@
 //************************
 //* SHADOW
 //************************
-
-// *** NOTES *** // 
-
-// *** Using this mixin allows you to be more specific about where a value belongs to (e.g. by specifying the "x" or "y" axis with the arguments' names) * ** //
-
-// *** I didn't find any way how I could give the opportunity to the user of putting more than one shadow (I'll work on that) *** // 
-
 @mixin shadow
 (
     $type: box,
@@ -217,44 +187,38 @@
 //************************
 //* MEDIA QUERIES
 //************************
+$vw-mobile-sm: 360px !default;
+$vw-mobile-md: 414px !default;
+$vw-mobile-lg: 480px !default;
+$vw-mobile-xl: 552px !default;
 
-// *** NOTES *** // 
+$vw-tablet-sm: 768px !default;
+$vw-tablet-md: 912px !default;
+$vw-tablet-lg: 1024px !default;
+$vw-tablet-xl: 1280px !default;
 
-// *** You can choose among the different default sizes I've already created (or if you want, you can either modify or create your own screen resolutions for the media queries just by changing either the key, the value, or both once you import this stylesheet). You can also modify the key devices as well *** //
-
-// *** You can decide what'll be the query's criteria for the breakpoint (min-width, max-width, min-height, or max-height) just by writing the rule in the type's argument (min-width is the default) *** //
-
-// *** I didn't find a way to let the mixin detects when the user puts an unknown value, the mixin only detects when the user doesn't put a value and leave the size variable empty *** //
-
-// *** AVAILABLES SIZES *** //
-
-// *** I've assigned a key for each kinda device to be more specific and then I added the different screen sizes that could fit there with keywords like "small", "medium", and "big" as keys, but you can add more devices and screen sizes if you want *** //
-
-// 1   > > >   480px 
-
-// 2   > > >   552px 
-
-// 3   > > >   768px
-
-// 4   > > >   919px
-
-// 5   > > >   1080px
-
-// 6   > > >   1212px
+$vw-desktop-sm: 1366px !default;
+$vw-desktop-md: 1536px !default;
+$vw-desktop-lg: 1920px !default;
 
 $screen-sizes: 
 (
-    'smartphone': (
-        'sm': 480px,
-        'md': 552px
+    'mobile': (
+        'sm': $vw-mobile-sm,
+        'md': $vw-mobile-md,
+        'lg': $vw-mobile-lg,
+        'xl': $vw-mobile-xl
     ),
     'tablet': (
-        'sm': 768px,
-        'md': 912px,
-        'lg': 1080px
+        'sm': $vw-tablet-sm,
+        'md': $vw-tablet-md,
+        'lg': $vw-tablet-lg,
+        'xl': $vw-tablet-xl
     ),
     'desktop': (
-        'sm': 1212px
+        'sm': $vw-desktop-sm,
+        'md': $vw-desktop-md,
+        'lg': $vw-desktop-lg
     )
 );
 
@@ -272,6 +236,25 @@ $screen-sizes:
         @error 'You have not given an available device value for your media query yet'; 
     } @else if $size == false {
         @error 'You have not given an available screen size for your media query yet';
+    }
+}
+
+//************************
+//* BOX-MODEL
+//************************
+@mixin box() {
+    $selector: selector.parse(&);
+    $parent-1: selector.parse('html');
+    $parent-2: selector.parse('*');
+
+    @if $parent-1 == $selector {
+        box-sizing: border-box;
+    } @else if $parent-2 == $selector {
+        &,
+        &::before,
+        &::after { box-sizing: inherit; }
+    } @else {
+        @error 'You are trying to parse this mixin within a selector that is neither #{$parent-1} or #{$parent-2}';
     }
 }
 
