@@ -109,11 +109,11 @@ I've assigned a key for each kinda device to be more specific and then I added t
 
 ### Sizes
 
-![](viewport-vars(1).png)
+![](readme/viewport-vars(1).png)
 
-![](viewport-vars(2).png)
+![](readme/viewport-vars(2).png)
 
-![](viewport-vars(3).png)
+![](readme/viewport-vars(3).png)
 
 ## Box-model mixin (04.08.21), created by [@said-alrove](https://twitter.com/said_alrove).
 
