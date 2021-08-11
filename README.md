@@ -83,7 +83,7 @@ Because sometimes you might use this mixin more than once in the same context, y
 #### Use
 I decided to still use the individual properties as arguments due to that way you can be more specific when calling this mixing (thanks to this, you can identify where each value belongs to faster).
 
-> **Inset** has a 81.89% support in 14.07.21, therefore I considered useful to use it here instead of putting each property individually, and that way write less code.
+> **Inset** has a 81.89% of support in 14.07.21, therefore I considered useful to use it here instead of putting each property individually, and that way write less code.
 
 You might use $inset only if you are going to use the inline and block (or the full shorthand) values, for instance: 
 ```
