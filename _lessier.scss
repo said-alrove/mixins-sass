@@ -1,14 +1,14 @@
 ////////////////////////// 
-// *** LESSIER 1.5 *** // 
+// *** LESSIER 1.6 *** // 
 ///////////////////////// 
 
 @use 'sass:math';
+@use 'sass:meta';
 @use 'sass:map';
 @use 'sass:list';
-@use 'sass:meta';
-@use 'sass:selector';
-@use 'sass:string';
 @use 'sass:color';
+@use 'sass:string';
+@use 'sass:selector';
 
 ///////////////////// 
 // *** MIXINS *** //
@@ -19,6 +19,7 @@
 //************************ 
 @mixin grid
 (
+    $display: true,
     $rows: false, 
     $cols: false, 
     $flow: false, 
@@ -35,7 +36,8 @@
     $gap: false
 ) 
 {
-    display: grid;
+    @if $display { display: grid; }
+
     @if $rows and $cols {
         grid: $rows / $cols;
     } @else if $rows {
@@ -84,6 +86,7 @@
 //************************
 @mixin flexbox
 (
+    $display: true,
     $dir: false, 
     $wrap: false, 
     $jt-content: false, 
@@ -91,7 +94,8 @@
     $gap: false
 )
 {
-    display: flex;
+    @if $display { display: flex; }
+
     @if $dir and $wrap {
         flex-flow: $dir $wrap;
     } @else if $dir {
