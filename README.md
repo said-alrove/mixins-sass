@@ -60,7 +60,7 @@ In the case of the **grid-template-columns** might happen the same if you decide
 #### Use
 If you use both properties **flex-direction** and **flex-wrap**, SASS will compile it with the shorthand "flex-flow" for less code. 
 
-> In that case, I decided to don't create a specific argument for the shorthand property **flex-flow** due to they're not totally related such as justify-**content** and align-**content** in Grid.
+> In that case, I decided to don't create a specific argument for the shorthand property **flex-flow** due to they're not totally related such as **justify-content** and **align-content** in Grid.
 
 Because sometimes you might use this mixin more than once in the same context, you can tell the mixin to don't print the display declaration again by using the **$display** argument and giving it a false value.
 
@@ -79,9 +79,16 @@ Because sometimes you might use this mixin more than once in the same context, y
 #### Use
 I decided to still use the individual properties as arguments due to that way you can be more specific when calling this mixing (thanks to this, you can identify where each value belongs to faster).
 
-> **Inset** has a 81.89% usage in 14.07.21, therefore I considered useful to use it here instead of putting each property, and that way write less code.
+> **Inset** has a 81.89% support in 14.07.21, therefore I considered useful to use it here instead of putting each property, and that way write less code.
 
-You might use $inset only if you give the inline and block (or the full shorthand) values, e.g. inset: 1rem, or inset: 1rem 2rem. Otherwise, f you use $inset to give it the four values individually, will be harder to understand where each value belongs to (top, right, bottom, or left), thus if you have to specify more than 2 values, then you should use the individual arguments instead of using the inset shorthand.
+You might use $inset only if you give the inline and block (or the full shorthand) values, for instance: 
+```
+    inset: 1rem; 
+```
+```    
+    inset: 1rem 2rem; 
+```
+Otherwise, if you use $inset to give it the four values individually, will be harder to understand where each value belongs to (top, right, bottom, or left), thus if you have to specify more than 2 values, then you should use the individual arguments instead of using the inset shorthand.
 
 > However, if you use the individual arguments, they'll be compiled to CSS with the shorthand "inset" anyways, the difference is that you'll be able to understand in a better way where a value belongs to when reading the code.
 
@@ -127,7 +134,7 @@ Using this mixin allows you to be more specific about where a value belongs to (
 
 I didn't find any way how I could give the opportunity to the user of putting more than one shadow (I'll work on that).
 
-> That's something possible in LESS, but I've not found how to do it in SASS
+> That's something possible in LESS, but I've not found how to do it in SASS yet.
 
 #### Mixin's preview
 
