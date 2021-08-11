@@ -7,8 +7,8 @@ The images that I'll upload are illustrative only, they don't show all the prope
 
 ## Table of contents
 
-1. [Grid](##Grid)
-  - [Use](###Use)
+1. [Grid](https://github.com/said-alrove/mixins-sass/edit/main/README.md#Grid)
+    - [Use](https://github.com/said-alrove/mixins-sass/edit/main/README.md#Use)
   
 
 ## Grid
