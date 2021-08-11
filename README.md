@@ -17,10 +17,15 @@ The images that I'll upload are illustrative only, they don't show all the prope
     - [Preview](#Preview-1)
         - [SASS](#SASS-1)
         - [CSS](#CSS-1)
-      
-  
+3. [Pseudo-element](#Pseudo-elements)
+    - [Use](#Use-2)
+    - [Preview](#Preview-2)
+        - [SASS](#SASS-2)
+        - [CSS](#CSS-2)
 
 ### Grid
+
+> **Note**: Created by [@said_alrove]() on 14.07.21
 
 #### Use
 If you're gonna use both properties **justify** and **align** then, use the shorthand property "place" for writing less code.
