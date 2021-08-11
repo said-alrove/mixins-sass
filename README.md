@@ -7,9 +7,9 @@ The images that I'll upload are illustrative only, they don't show all the prope
 
 ## Table of contents
 
-1.- [Example](#CSS-Grid-Mixin-(14.07.21)
+1.- [Example](#CSS-Grid-Mixin)
 
-## CSS Grid Mixin (14.07.21), created by [@said-alrove](https://twitter.com/said_alrove).
+## CSS Grid Mixin
 
 ### Notes
 If you're gonna use both properties **justify** and **align** then, use the shorthand property "place" for writing less code.
