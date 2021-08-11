@@ -1,5 +1,5 @@
 # mixins-sass
-The project's name is **LESSIER** which stands for less code to make projects easier :D.
+The project's name is **LESSIER** which stands for *less* code to make projects *easier* :D.
 
 Here I'll upload useful mixins for SASS (either created by me or others).
 
@@ -22,24 +22,28 @@ The images that I'll upload are illustrative only, they don't show all the prope
 5. [Shadow](#Shadow)
     - [Use](#Use-4)
     - [Preview](#Preview-4)
-6. [Box-model](#Box-model)
+6. [Media Queries](#Media-Queries)
     - [Use](#Use-5)
     - [Preview](#Preview-5)
+    - [Sizes](#Default-sizes)
+7. [Box-model](#Box-model)
+    - [Use](#Use-6)
+    - [Preview](#Preview-6)
 
 ### Grid
 
 > **Note**: Created by [@said_alrove](https://twitter.com/said_alrove) on 14.07.21
 
 #### Use
-If you're going to use both properties, **justify** and **align** at the same time, then consider using the shorthand "place" for less code.
+If you're going to use both properties, **justify** and **align** at the same time, then consider using the shorthand **place** for less code.
 
-If you're going to use both properties, **row-gap** and **column-gap** at the same time, then consider using the shorthand "gap" for less code.
+If you're going to use both properties, **row-gap** and **column-gap** at the same time, then consider using the shorthand **gap** for less code.
 
 If for any reason you put both properties of a shorthand, each individually, SASS is gonna show you a warn saying that you should be using the shorthand instead (but the code won't stop compilating).
 
 Because sometimes you might use this mixin more than once in the same context, you can tell the mixin to don't print the display declaration again by using the **$display** argument and giving it a false value.
 
-The property ** grid-template-areas ** is not included here due to in most of the cases you'll write complex layouts, therefore the task of reading the property within the mixin would be difficult if you're not careful.
+The property **grid-template-areas** is not included here due to in most of the cases you'll write complex layouts, therefore the task of reading the property within the mixin would be difficult if you're not careful.
 
 In the case of the **grid-template-columns** might happen the same if you decide to use the line names within it, thus if you do it, I encourage you to write the property individually, out of the mixin, for more readability.
 
@@ -58,7 +62,7 @@ In the case of the **grid-template-columns** might happen the same if you decide
 > **Note**: Created by [@said_alrove](https://twitter.com/said_alrove) on 14.07.21
 
 #### Use
-If you use both properties **flex-direction** and **flex-wrap**, SASS will compile it with the shorthand "flex-flow" for less code. 
+If you use both properties **flex-direction** and **flex-wrap**, SASS will compile it with the shorthand **flex-flow** for less code. 
 
 > In that case, I decided to don't create a specific argument for the shorthand property **flex-flow** due to they're not totally related such as **justify-content** and **align-content** in Grid.
 
@@ -79,9 +83,9 @@ Because sometimes you might use this mixin more than once in the same context, y
 #### Use
 I decided to still use the individual properties as arguments due to that way you can be more specific when calling this mixing (thanks to this, you can identify where each value belongs to faster).
 
-> **Inset** has a 81.89% support in 14.07.21, therefore I considered useful to use it here instead of putting each property, and that way write less code.
+> **Inset** has a 81.89% support in 14.07.21, therefore I considered useful to use it here instead of putting each property individually, and that way write less code.
 
-You might use $inset only if you give the inline and block (or the full shorthand) values, for instance: 
+You might use $inset only if you are going to use the inline and block (or the full shorthand) values, for instance: 
 ```
     inset: 2rem 1rem; 
 ```
@@ -91,7 +95,7 @@ Or:
 ```
 Otherwise, if you use $inset to give it the four values individually, will be harder to understand where each value belongs to (top, right, bottom, or left), thus if you have to specify more than 2 values, then you should use the individual arguments instead of using the inset shorthand.
 
-> However, if you use the individual arguments, they'll be compiled to CSS with the shorthand "inset" anyways, the difference is that you'll be able to understand in a better way where a value belongs to when reading the code.
+> However, if you use the individual arguments, they'll be compiled to CSS with the **inset** shorthand anyways, the difference is that you'll be able to understand in a better way where a value belongs to when reading the code.
 
 #### Preview
 
@@ -106,9 +110,9 @@ Otherwise, if you use $inset to give it the four values individually, will be ha
 > **Note**: Created by [@said_alrove](https://twitter.com/said_alrove) on 15.07.21
 
 #### Use
-By default, if you don't give any true value to the "support" argument, the mixin will print within the code [the 4 most used prefixes](https://www.thoughtco.com/css-vendor-prefixes-3466867).
+By default, if you don't give any true value to the **support** argument, the mixin will print within the code [the 4 most used prefixes](https://www.thoughtco.com/css-vendor-prefixes-3466867).
 
-Otherwise if you give to the "support" argument a true value, you're able to write your own prefixes.
+Otherwise if you give to the **support** argument a true value, you're able to write your own prefixes.
 
 > In that case, the prefixes that are by default won't be printed ... you'll have to indicate which ones to use on your own.
 
@@ -156,7 +160,7 @@ You can decide what'll be the query's criteria for the breakpoint (min-width, ma
 
 If you write a query's unknown criteria, SASS will stop compilating and it's going to show you an error telling you that you're using a wrong $type's value.
 
-> I've nested a map inside the main one to each kinda device to be more specific and then I added the different screen sizes that could fit there with abbreviations like **sm**, **md**, **lg**, and **xl** as key's names, but you can add more devices and screen sizes if you want it.
+> I've nested a map inside the main one for each kind of device to be more specific and then I added the different screen sizes that could fit there with abbreviations like **sm**, **md**, **lg**, and **xl** as key's names, but you can add more devices and screen sizes if you want it.
 
 Each key's value is related to a variable within the SASS file instead of a fixed value, this allows the user to modify a key's variable if he wants without going to the library. The user just has to import LESSIER with the **@use** at-rule and the keyword **with**, that way you can overwrite a variable's value. 
 
@@ -172,12 +176,16 @@ The sizes that are assigned by default are based on the most used screen sizes i
 ##### CSS
 ![](readme/query-css.png)
 
+#### Default Sizes
+
+![](readme/viewport-vars.png)
+
 ### Box-model 
 
 > **Note**: Created by [@said_alrove](https://twitter.com/said_alrove) on 04.08.21
 
 #### Use
-You just have to call this mixin within the html and universal selector and the mixin itself it's gonna do the rest.
+You just have to call this mixin within the html and universal selector and the mixin itself it's going to do the rest.
 
 The mixin automatically detects when it's located within the html or the universal selector and then runs, if it's not located there, it's going to show you an error telling you that you should use this mixin inside the selectors mentioned before.
 
@@ -194,4 +202,4 @@ The mixin automatically detects when it's located within the html or the univers
 ![](readme/box(2)-css.png)
 
 ### Coming soon...
-I'll continue uploading more mixins soon...if you want to help me adding more interesting mixins, send me a message on [Twitter](https://twitter.com/said_alrove) :D!.
+I'll continue uploading more mixins soon ... if you'd like to help me adding more interesting mixins, send me a message on [Twitter](https://twitter.com/said_alrove) :D!.
