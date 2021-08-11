@@ -7,11 +7,13 @@ The images that I'll upload are illustrative only, they don't show all the prope
 
 ## Table of contents
 
-1.- [Example](#CSS-Grid-Mixin)
+1. [Grid](##Grid)
+  - [Use](###Use)
+  
 
-## CSS Grid Mixin
+## Grid
 
-### Notes
+### Use
 If you're gonna use both properties **justify** and **align** then, use the shorthand property "place" for writing less code.
 
 If for any reason you put both properties each individually, SASS is gonna stop compilating and it'll tell you that you should use the "place" shorthand instead.
