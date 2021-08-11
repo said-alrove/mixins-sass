@@ -12,6 +12,12 @@ The images that I'll upload are illustrative only, they don't show all the prope
     - [Preview](#Preview)
         - [SASS](#SASS)
         - [CSS](#CSS)
+2. [Flexbox](#Flexbox)
+    - [Use](#Use-1)
+    - [Preview](#Preview-1)
+        - [SASS](#SASS-1)
+        - [CSS](#CSS-1)
+      
   
 
 ### Grid
@@ -29,17 +35,17 @@ If for any reason you put both properties each individually, SASS is gonna stop 
 ##### CSS
 ![](readme/grid-css.png)
 
-## Flexbox Mixin (14.07.21), created by [@said-alrove](https://twitter.com/said_alrove).
+### Flexbox
 
-### Notes
+#### Notes
 If you use both properties "flex-direction" and "flex-wrap", SASS will compile it with the shorthand "flex-flow" for less code.
 
-### Mixin's preview
+#### Preview
 
-#### SASS
+##### SASS
 ![](readme/flexbox-sass.png)
 
-#### CSS
+##### CSS
 ![](readme/flexbox-css.png)
 
 ## Pseudo-elements mixin (15.07.21), created by [@said-alrove](https://twitter.com/said_alrove) but inspired in one made by [@kevinjpowell](https://twitter.com/kevinjpowell?lang=en).
