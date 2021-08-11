@@ -7,23 +7,26 @@ The images that I'll upload are illustrative only, they don't show all the prope
 
 ## Table of contents
 
-1. [Grid](https://github.com/said-alrove/mixins-sass/edit/main/README.md#Grid)
-    - [Use](https://github.com/said-alrove/mixins-sass#use)
+1. [Grid](#Grid)
+    - [Use](#Use)
+    - [Preview](#Preview)
+        - [SASS](#SASS)
+        - [CSS](#CSS)
   
 
-## Grid
+### Grid
 
-### Use
+#### Use
 If you're gonna use both properties **justify** and **align** then, use the shorthand property "place" for writing less code.
 
 If for any reason you put both properties each individually, SASS is gonna stop compilating and it'll tell you that you should use the "place" shorthand instead.
 
-### Mixin's preview
+#### Preview
 
-#### SASS
+##### SASS
 ![](readme/grid-sass.png)
 
-#### CSS
+##### CSS
 ![](readme/grid-css.png)
 
 ## Flexbox Mixin (14.07.21), created by [@said-alrove](https://twitter.com/said_alrove).
