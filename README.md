@@ -83,10 +83,11 @@ I decided to still use the individual properties as arguments due to that way yo
 
 You might use $inset only if you give the inline and block (or the full shorthand) values, for instance: 
 ```
-    inset: 1rem; 
+    inset: 2rem 1rem; 
 ```
+Or:
 ```    
-    inset: 1rem 2rem; 
+    inset: 2rem; 
 ```
 Otherwise, if you use $inset to give it the four values individually, will be harder to understand where each value belongs to (top, right, bottom, or left), thus if you have to specify more than 2 values, then you should use the individual arguments instead of using the inset shorthand.
 
